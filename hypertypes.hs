@@ -1,5 +1,7 @@
 {-# language TypeSynonymInstances, FlexibleInstances, LambdaCase #-}
 
+import Data.Semigroup
+
 newtype Hy a b = Hy { invoke :: Hy b a -> b }
 
 data Ty' = Top | Int | Bool | Err | Ty' `App` Ty' | Arr

@@ -1,7 +1,5 @@
 {-# language TypeSynonymInstances, FlexibleInstances, LambdaCase #-}
 
-import Data.Semigroup
-
 newtype Hy a b = Hy { invoke :: Hy b a -> b }
 
 data Ty' = Top | Int | Bool | Err | Ty' `App` Ty' | Arr
@@ -30,6 +28,5 @@ unif a b = a <> b <> a <> a
 
 obtain :: Ty -> Ty'
 obtain (Hy f) = f (Hy (\_ -> Top))
-
 
 main = print (obtain (func <> func))
